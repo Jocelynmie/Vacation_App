@@ -6,20 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .font(.largeTitle)
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView{
+            Tab("Places",systemImage: "photo"){
+                PlaceList()
+            }
+            Tab("Trip History",systemImage: "chart.line.uptrend.xyaxis"){
+                TripChart()
+            }
         }
-        .padding()
+        .preferredColorScheme(.dark)
     }
 }
 
 #Preview {
     ContentView()
+        .modelContainer(Place.preview)
 }
